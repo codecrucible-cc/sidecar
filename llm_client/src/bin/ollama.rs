@@ -62,7 +62,7 @@ Remember to APPLY THE EDITS from the ## Export to codebase section and make sure
 <|im_start|>assistant"#;
     let request = LLMClientCompletionStringRequest::new(
         llm_client::clients::types::LLMType::Custom(
-            "codestory-finetune-export-to-codebase:latest".to_owned(),
+            "codecrucible-finetune-export-to-codebase:latest".to_owned(),
         ),
         prompt.to_owned(),
         0.7,

@@ -5,7 +5,7 @@ use std::env;
 use tokio;
 
 pub fn tee_server_url() -> String {
-    env::var("AIDE_TEE_URL").unwrap_or_else(|_| "http://localhost:8080".to_string())
+    env::var("CCDE_TEE_URL").unwrap_or_else(|_| "http://localhost:8080".to_string())
 }
 
 pub struct TeeMiddleware {
@@ -29,7 +29,7 @@ impl Middleware for TeeMiddleware {
         next: Next<'_>,
     ) -> Result<Response> {
         let path = req.url().path();
-        let full_url = format!("{}/sidecar_request{}", tee_server_url(), path);
+        let full_url = format!("{}/anvil_request{}", tee_server_url(), path);
 
         let body = req.try_clone().and_then(|req| {
             req.body().map(|body| {

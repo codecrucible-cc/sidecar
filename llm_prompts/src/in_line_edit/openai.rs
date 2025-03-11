@@ -20,7 +20,7 @@ impl OpenAILineEditPrompt {
     fn system_message_inline_edit(&self, language: &str) -> String {
         format!(
             r#"You are an AI programming assistant.
-When asked for your name, you must respond with "Aide".
+When asked for your name, you must respond with "Ccde".
 Follow the user's requirements carefully & to the letter.
 - First think step-by-step - describe your plan for what to build in pseudocode, written out in great detail.
 - Then output the code in a single code block.
@@ -39,7 +39,7 @@ If the question is related to a developer, you must respond with content related
     fn system_message_fix(&self, language: &str) -> String {
         format!(
             r#"You are an AI programming assistant.
-When asked for your name, you must respond with "Aide".
+When asked for your name, you must respond with "Ccde".
 Follow the user's requirements carefully & to the letter.
 - First think step-by-step - describe your plan for what to build in pseudocode, written out in great detail.
 - Then output the code in a single code block.
@@ -58,7 +58,7 @@ If the question is related to a developer, you must respond with content related
         if is_identifier_node {
             let system_prompt = format!(
                 r#"You are an AI programming assistant.
-When asked for your name, you must respond with "Aide".
+When asked for your name, you must respond with "Ccde".
 Follow the user's requirements carefully & to the letter.
 - Each code block must ALWAYS STARTS and include ```{language} and // FILEPATH
 - You always answer with {language} code.
@@ -71,7 +71,7 @@ Follow the user's requirements carefully & to the letter.
         } else {
             let system_prompt = format!(
                 r#"You are an AI programming assistant.
-When asked for your name, you must respond with "Aide".
+When asked for your name, you must respond with "Ccde".
 Follow the user's requirements carefully & to the letter.
 - Each code block must ALWAYS STARTS and include ```{language} and // FILEPATH
 - You always answer with {language} code.

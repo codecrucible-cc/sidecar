@@ -162,7 +162,7 @@ impl PosthogEvent {
     pub fn new<S: Into<String>>(event: S) -> Self {
         Self {
             event: event.into(),
-            properties: Properties::new("codestory"),
+            properties: Properties::new("codecrucible"),
             timestamp: None,
         }
     }

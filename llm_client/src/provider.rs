@@ -1,6 +1,6 @@
 //! Contains types for setting the provider for the LLM, we are going to support
 //! 3 things for now:
-//! - CodeStory
+//! - CodeCrucible
 //! - OpenAI
 //! - Ollama
 //! - Azure
@@ -14,12 +14,12 @@ pub struct AzureOpenAIDeploymentId {
 }
 
 #[derive(Default, Debug, Clone, serde::Deserialize, serde::Serialize, Hash, PartialEq, Eq)]
-pub struct CodeStoryLLMTypes {
+pub struct CodeCrucibleLLMTypes {
     // shoehorning the llm type here so we can provide the correct api keys
     pub llm_type: Option<LLMType>,
 }
 
-impl CodeStoryLLMTypes {
+impl CodeCrucibleLLMTypes {
     pub fn new() -> Self {
         Self { llm_type: None }
     }
@@ -31,7 +31,7 @@ pub enum LLMProvider {
     TogetherAI,
     Ollama,
     LMStudio,
-    CodeStory(CodeStoryLLMTypes),
+    CodeCrucible(CodeCrucibleLLMTypes),
     Azure(AzureOpenAIDeploymentId),
     OpenAICompatible,
     Anthropic,
@@ -49,7 +49,7 @@ impl std::fmt::Display for LLMProvider {
             LLMProvider::TogetherAI => write!(f, "TogetherAI"),
             LLMProvider::Ollama => write!(f, "Ollama"),
             LLMProvider::LMStudio => write!(f, "LMStudio"),
-            LLMProvider::CodeStory(_) => write!(f, "CodeStory"),
+            LLMProvider::CodeCrucible(_) => write!(f, "CodeCrucible"),
             LLMProvider::Azure(_) => write!(f, "Azure"),
             LLMProvider::OpenAICompatible => write!(f, "OpenAICompatible"),
             LLMProvider::Anthropic => write!(f, "Anthropic"),
@@ -63,8 +63,8 @@ impl std::fmt::Display for LLMProvider {
 }
 
 impl LLMProvider {
-    pub fn is_codestory(&self) -> bool {
-        matches!(self, LLMProvider::CodeStory(_))
+    pub fn is_codecrucible(&self) -> bool {
+        matches!(self, LLMProvider::CodeCrucible(_))
     }
 
     pub fn is_anthropic_api_key(&self) -> bool {
@@ -80,7 +80,7 @@ pub enum LLMProviderAPIKeys {
     OpenAIAzureConfig(AzureConfig),
     LMStudio(LMStudioConfig),
     OpenAICompatible(OpenAICompatibleConfig),
-    CodeStory(CodestoryAccessToken),
+    CodeCrucible(CodecrucibleAccessToken),
     Anthropic(AnthropicAPIKey),
     FireworksAI(FireworksAPIKey),
     GeminiPro(GeminiProAPIKey),
@@ -94,8 +94,8 @@ impl LLMProviderAPIKeys {
         matches!(self, LLMProviderAPIKeys::OpenAI(_))
     }
 
-    pub fn is_codestory(&self) -> bool {
-        matches!(self, LLMProviderAPIKeys::CodeStory(_))
+    pub fn is_codecrucible(&self) -> bool {
+        matches!(self, LLMProviderAPIKeys::CodeCrucible(_))
     }
 
     pub fn provider_type(&self) -> LLMProvider {
@@ -109,8 +109,8 @@ impl LLMProviderAPIKeys {
                 })
             }
             LLMProviderAPIKeys::LMStudio(_) => LLMProvider::LMStudio,
-            LLMProviderAPIKeys::CodeStory(_) => {
-                LLMProvider::CodeStory(CodeStoryLLMTypes { llm_type: None })
+            LLMProviderAPIKeys::CodeCrucible(_) => {
+                LLMProvider::CodeCrucible(CodeCrucibleLLMTypes { llm_type: None })
             }
             LLMProviderAPIKeys::OpenAICompatible(_) => LLMProvider::OpenAICompatible,
             LLMProviderAPIKeys::Anthropic(_) => LLMProvider::Anthropic,
@@ -158,7 +158,7 @@ impl LLMProviderAPIKeys {
             // properly for the azure provider, if its set to "" that means
             // we do not have a deployment key and we should be returning quickly
             // here.
-            // NOTE: We should change this to using the codestory configuration
+            // NOTE: We should change this to using the codecrucible configuration
             // and make calls appropriately, for now this is fine
             LLMProvider::Azure(deployment_id) => {
                 if deployment_id.deployment_id == "" {
@@ -172,10 +172,10 @@ impl LLMProviderAPIKeys {
                     None
                 }
             }
-            // big up codestory provider brrrr
-            LLMProvider::CodeStory(_) => {
-                if let LLMProviderAPIKeys::CodeStory(access_token) = self {
-                    Some(LLMProviderAPIKeys::CodeStory(access_token.clone()))
+            // big up codecrucible provider brrrr
+            LLMProvider::CodeCrucible(_) => {
+                if let LLMProviderAPIKeys::CodeCrucible(access_token) = self {
+                    Some(LLMProviderAPIKeys::CodeCrucible(access_token.clone()))
                 } else {
                     None
                 }
@@ -321,11 +321,11 @@ pub struct AnthropicAPIKey {
 
 // Named AccessToken for consistency with workOS / ide language
 #[derive(Debug, Clone, serde::Deserialize, serde::Serialize)]
-pub struct CodestoryAccessToken {
+pub struct CodecrucibleAccessToken {
     pub access_token: String,
 }
 
-impl CodestoryAccessToken {
+impl CodecrucibleAccessToken {
     pub fn new(access_token: String) -> Self {
         Self { access_token }
     }
@@ -372,7 +372,7 @@ impl LMStudioConfig {
 }
 
 #[derive(Debug, Clone, serde::Deserialize, serde::Serialize)]
-pub struct CodeStoryConfig {
+pub struct CodeCrucibleConfig {
     pub llm_type: LLMType,
 }
 

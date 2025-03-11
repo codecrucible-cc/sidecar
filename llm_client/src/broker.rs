@@ -14,7 +14,7 @@ use sqlx::SqlitePool;
 use crate::{
     clients::{
         anthropic::AnthropicClient,
-        codestory::CodeStoryClient,
+        codecrucible::CodeCrucibleClient,
         fireworks::FireworksAIClient,
         gemini_pro::GeminiProClient,
         google_ai::GoogleAIStdioClient,
@@ -30,7 +30,7 @@ use crate::{
             LLMClientCompletionStringRequest, LLMClientError, LLMType,
         },
     },
-    provider::{CodeStoryLLMTypes, LLMProvider, LLMProviderAPIKeys},
+    provider::{CodeCrucibleLLMTypes, LLMProvider, LLMProviderAPIKeys},
     reporting::posthog::{posthog_client, PosthogClient},
 };
 
@@ -67,9 +67,9 @@ impl LLMBroker {
                 Box::new(OpenAICompatibleClient::new()),
             )
             .add_provider(
-                LLMProvider::CodeStory(CodeStoryLLMTypes { llm_type: None }),
-                Box::new(CodeStoryClient::new(
-                    "https://codestory-provider-dot-anton-390822.ue.r.appspot.com",
+                LLMProvider::CodeCrucible(CodeCrucibleLLMTypes { llm_type: None }),
+                Box::new(CodeCrucibleClient::new(
+                    "https://codecrucible-provider-dot-anton-390822.ue.r.appspot.com",
                 )),
             )
             .add_provider(LLMProvider::FireworksAI, Box::new(FireworksAIClient::new()))
@@ -119,8 +119,8 @@ impl LLMBroker {
             LLMProviderAPIKeys::OpenAIAzureConfig(_) => LLMProvider::OpenAI,
             LLMProviderAPIKeys::TogetherAI(_) => LLMProvider::TogetherAI,
             LLMProviderAPIKeys::LMStudio(_) => LLMProvider::LMStudio,
-            LLMProviderAPIKeys::CodeStory(_) => {
-                LLMProvider::CodeStory(CodeStoryLLMTypes { llm_type: None })
+            LLMProviderAPIKeys::CodeCrucible(_) => {
+                LLMProvider::CodeCrucible(CodeCrucibleLLMTypes { llm_type: None })
             }
             LLMProviderAPIKeys::OpenAICompatible(_) => LLMProvider::OpenAICompatible,
             LLMProviderAPIKeys::Anthropic(_) => LLMProvider::Anthropic,
@@ -150,8 +150,8 @@ impl LLMBroker {
             LLMProviderAPIKeys::OpenAIAzureConfig(_) => LLMProvider::OpenAI,
             LLMProviderAPIKeys::TogetherAI(_) => LLMProvider::TogetherAI,
             LLMProviderAPIKeys::LMStudio(_) => LLMProvider::LMStudio,
-            LLMProviderAPIKeys::CodeStory(_) => {
-                LLMProvider::CodeStory(CodeStoryLLMTypes { llm_type: None })
+            LLMProviderAPIKeys::CodeCrucible(_) => {
+                LLMProvider::CodeCrucible(CodeCrucibleLLMTypes { llm_type: None })
             }
             LLMProviderAPIKeys::OpenAICompatible(_) => LLMProvider::OpenAICompatible,
             LLMProviderAPIKeys::Anthropic(_) => LLMProvider::Anthropic,
@@ -396,8 +396,8 @@ impl LLMBroker {
             LLMProviderAPIKeys::OpenAIAzureConfig(_) => LLMProvider::OpenAI,
             LLMProviderAPIKeys::TogetherAI(_) => LLMProvider::TogetherAI,
             LLMProviderAPIKeys::LMStudio(_) => LLMProvider::LMStudio,
-            LLMProviderAPIKeys::CodeStory(_) => {
-                LLMProvider::CodeStory(CodeStoryLLMTypes { llm_type: None })
+            LLMProviderAPIKeys::CodeCrucible(_) => {
+                LLMProvider::CodeCrucible(CodeCrucibleLLMTypes { llm_type: None })
             }
             LLMProviderAPIKeys::OpenAICompatible(_) => LLMProvider::OpenAICompatible,
             LLMProviderAPIKeys::Anthropic(_) => LLMProvider::Anthropic,

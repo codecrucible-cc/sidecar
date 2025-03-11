@@ -408,8 +408,8 @@ impl OpenRouterClient {
             .client
             .post(base_url)
             .bearer_auth(auth_key)
-            .header("HTTP-Referer", "https://aide.dev/")
-            .header("X-Title", "aide")
+            .header("HTTP-Referer", "https://ccde.dev/")
+            .header("X-Title", "ccde")
             .json(&request)
             .send()
             .await?;
@@ -526,8 +526,8 @@ impl LLMClient for OpenRouterClient {
             .client
             .post(base_url)
             .bearer_auth(auth_key)
-            .header("HTTP-Referer", "https://aide.dev/")
-            .header("X-Title", "aide")
+            .header("HTTP-Referer", "https://ccde.dev/")
+            .header("X-Title", "ccde")
             .json(&request)
             .send()
             .await?

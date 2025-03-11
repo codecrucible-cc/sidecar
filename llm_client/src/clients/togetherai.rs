@@ -197,7 +197,7 @@ impl LLMClient for TogetherAIClient {
             return Err(LLMClientError::FailedToGetResponse);
         }
         let together_ai_request = TogetherAIRequestString::from_string_request(request);
-        debug!("sidecar.togetherai.request: {:?}", &together_ai_request);
+        debug!("anvil.togetherai.request: {:?}", &together_ai_request);
         let mut response_stream = self
             .client
             .post(self.inference_endpoint())
@@ -217,7 +217,7 @@ impl LLMClient for TogetherAIClient {
                     }
                     let value = serde_json::from_str::<TogetherAIRequestCompletion>(&event.data)?;
                     buffered_string = buffered_string + &value.choices[0].text;
-                    debug!("sidecar.togetherai: {}", &buffered_string);
+                    debug!("anvil.togetherai: {}", &buffered_string);
                     if let Err(e) = sender.send(LLMClientCompletionResponse::new(
                         buffered_string.to_owned(),
                         Some(value.choices[0].text.to_owned()),

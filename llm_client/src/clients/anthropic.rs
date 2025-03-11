@@ -472,7 +472,7 @@ impl AnthropicClient {
             .send()
             .await
             .map_err(|e| {
-                error!("sidecar.anthropic.error: {:?}", &e);
+                error!("anvil.anthropic.error: {:?}", &e);
                 e
             })?;
 
@@ -745,7 +745,7 @@ impl LLMClient for AnthropicClient {
             .send()
             .await
             .map_err(|e| {
-                error!("sidecar.anthropic.error: {:?}", &e);
+                error!("anvil.anthropic.error: {:?}", &e);
                 e
             })?;
 

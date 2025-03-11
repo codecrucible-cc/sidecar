@@ -3,7 +3,7 @@
 
 pub mod anthropic;
 pub mod anyscaleai;
-pub mod codestory;
+pub mod codecrucible;
 pub mod fireworks;
 pub mod gemini_pro;
 pub mod google_ai;

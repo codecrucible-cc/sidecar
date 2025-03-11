@@ -54,7 +54,7 @@ Let's focus on getting the "code symbols" which are necessary to satisfy the use
 As an example, given the following code selection:
 <code_selection>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 ```rust
 pub struct FillInMiddleBroker {{
@@ -116,7 +116,7 @@ Your reply should be, you should strictly follow this format:
 LLMType
 </name>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 <thinking>
 We need to first check if grok is part of the LLMType enum, this will make sure that the code we produce is never wrong
@@ -127,7 +127,7 @@ We need to first check if grok is part of the LLMType enum, this will make sure 
 FillInMiddleFormatter
 </name>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 <thinking>
 Other LLM's are implementing FillInMiddleFormatter trait, grok will also require support for this, so we need to check how to implement FillInMiddleFormatter trait
@@ -138,7 +138,7 @@ Other LLM's are implementing FillInMiddleFormatter trait, grok will also require
 new
 </name>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 <thinking>
 We have to change the new function and add the grok llm after implementing the formatter for grok llm.
@@ -151,7 +151,7 @@ We have to change the new function and add the grok llm after implementing the f
 LLMType
 </name>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 <step>
 We will need to first check the LLMType if it has support for grok or we need to edit it first
@@ -162,7 +162,7 @@ We will need to first check the LLMType if it has support for grok or we need to
 FillInMiddleFormatter
 </name>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 <step>
 Check the definition of `FillInMiddleFormatter` to see how to implement it
@@ -173,7 +173,7 @@ Check the definition of `FillInMiddleFormatter` to see how to implement it
 CodeLlamaFillInMiddleFormatter
 </name>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 <step>
 We can follow the implementation of CodeLlamaFillInMiddleFormatter since we will also have to follow a similar pattern of making changes and adding it to the right places if there are more.
@@ -184,7 +184,7 @@ We can follow the implementation of CodeLlamaFillInMiddleFormatter since we will
 GrokFillInMiddleFormatter
 </name>
 <file_path>
-sidecar/broker/fill_in_middle.rs
+anvil/broker/fill_in_middle.rs
 </file_path>
 <new>
 true
@@ -204,21 +204,21 @@ fn tree_sitter_router() -> Router {{
     Router::new()
         .route(
             "/documentation_parsing",
-            post(sidecar::webserver::tree_sitter::extract_documentation_strings),
+            post(anvil::webserver::tree_sitter::extract_documentation_strings),
         )
         .route(
             "/diagnostic_parsing",
-            post(sidecar::webserver::tree_sitter::extract_diagnostics_range),
+            post(anvil::webserver::tree_sitter::extract_diagnostics_range),
         )
         .route(
             "/tree_sitter_valid",
-            post(sidecar::webserver::tree_sitter::tree_sitter_node_check),
+            post(anvil::webserver::tree_sitter::tree_sitter_node_check),
         )
 }}
 
 fn file_operations_router() -> Router {{
     use axum::routing::*;
-    Router::new().route("/edit_file", post(sidecar::webserver::file_edit::file_edit))
+    Router::new().route("/edit_file", post(anvil::webserver::file_edit::file_edit))
 }}
 
 fn inline_completion() -> Router {{
@@ -226,31 +226,31 @@ fn inline_completion() -> Router {{
     Router::new()
         .route(
             "/inline_completion",
-            post(sidecar::webserver::inline_completion::inline_completion),
+            post(anvil::webserver::inline_completion::inline_completion),
         )
         .route(
             "/cancel_inline_completion",
-            post(sidecar::webserver::inline_completion::cancel_inline_completion),
+            post(anvil::webserver::inline_completion::cancel_inline_completion),
         )
         .route(
             "/document_open",
-            post(sidecar::webserver::inline_completion::inline_document_open),
+            post(anvil::webserver::inline_completion::inline_document_open),
         )
         .route(
             "/document_content_changed",
-            post(sidecar::webserver::inline_completion::inline_completion_file_content_change),
+            post(anvil::webserver::inline_completion::inline_completion_file_content_change),
         )
         .route(
             "/get_document_content",
-            post(sidecar::webserver::inline_completion::inline_completion_file_content),
+            post(anvil::webserver::inline_completion::inline_completion_file_content),
         )
         .route(
             "/get_identifier_nodes",
-            post(sidecar::webserver::inline_completion::get_identifier_nodes),
+            post(anvil::webserver::inline_completion::get_identifier_nodes),
         )
         .route(
             "/get_symbol_history",
-            post(sidecar::webserver::inline_completion::symbol_history),
+            post(anvil::webserver::inline_completion::symbol_history),
         )
 }}
 
@@ -280,7 +280,7 @@ inline_completion holds all the endpoints for symbols because it also has the `g
 symbol_history
 </name>
 <thinking>
-I can find more information on how to write the code for the endpoint by following the symbol `symbol_history` in the line: `             post(sidecar::webserver::inline_completion::symbol_history),`
+I can find more information on how to write the code for the endpoint by following the symbol `symbol_history` in the line: `             post(anvil::webserver::inline_completion::symbol_history),`
 <thinking>
 </symbol>
 </symbol_list>

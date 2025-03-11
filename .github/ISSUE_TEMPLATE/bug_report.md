@@ -8,9 +8,9 @@ assignees: ''
 ---
 
 Before submitting your bug report
- - I believe this is a bug. I'll try to join the Aide [Discord](https://discord.gg/mtgrhXM5Xf) for questions
+ - I believe this is a bug. I'll try to join the Ccde [Discord](https://discord.gg/mtgrhXM5Xf) for questions
  - I'm not able to find an open issue that reports the same bug
- - I've seen the troubleshooting guide on the CodeStory Docs
+ - I've seen the troubleshooting guide on the CodeCrucible Docs
 
 **Describe the bug**
 A clear and concise description of what the bug is.

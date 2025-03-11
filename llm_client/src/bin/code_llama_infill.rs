@@ -18,7 +18,7 @@ async fn main() {
     // let client = OpenAICompatibleClient::new();
     // let client = TogetherAIClient::new();
     let client = FireworksAIClient::new();
-    let prompt = r#"<PRE> // Path: /Users/skcd/scratch/sidecar/sidecar/src/inline_completion/context/codebase_context.rs
+    let prompt = r#"<PRE> // Path: /Users/skcd/scratch/anvil/anvil/src/inline_completion/context/codebase_context.rs
 //
 //
 // /// Creates the codebase context which we want to use
@@ -70,7 +70,7 @@ async fn main() {
 //             editor_parsing,
 //         }
 //
-// Path: /Users/skcd/scratch/sidecar/sidecar/src/inline_completion/context/codebase_context.rs
+// Path: /Users/skcd/scratch/anvil/anvil/src/inline_completion/context/codebase_context.rs
 //
 // /// Creates the codebase context which we want to use
 // /// for generating inline-completions
@@ -122,7 +122,7 @@ async fn main() {
 //         }
 //     }
 //
-// Path: /Users/skcd/scratch/sidecar/sidecar/src/inline_completion/context/codebase_context.rs
+// Path: /Users/skcd/scratch/anvil/anvil/src/inline_completion/context/codebase_context.rs
 // /// Creates the codebase context which we want to use
 // /// for generating inline-completions
 // pub struct CodeBaseContext {
@@ -174,7 +174,7 @@ async fn main() {
 //     }
 //
 //
-// Path: /Users/skcd/scratch/sidecar/sidecar/src/inline_completion/context/codebase_context.rs
+// Path: /Users/skcd/scratch/anvil/anvil/src/inline_completion/context/codebase_context.rs
 // /// for generating inline-completions
 // pub struct CodeBaseContext {
 //     tokenizer: Arc<LLMTokenizer>,
@@ -225,7 +225,7 @@ async fn main() {
 //     }
 //
 //     pub fn get_context_window_from_current_file(&self) -> String {
-// /Users/skcd/scratch/sidecar/sidecar/src/inline_completion/context/codebase_context.rs
+// /Users/skcd/scratch/anvil/anvil/src/inline_completion/context/codebase_context.rs
 /// for generating inline-completions
 pub struct CodeBaseContext {
     tokenizer: Arc<LLMTokenizer>,

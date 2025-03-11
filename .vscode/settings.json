@@ -11,7 +11,7 @@
     "bstr",
     "canonicalize",
     "chunker",
-    "codestory",
+    "codecrucible",
     "consts",
     "dashmap",
     "debouncer",
@@ -72,7 +72,7 @@
     "webserver",
     "yolo"
   ],
-  "rust-analyzer.linkedProjects": ["./Cargo.toml", "./sidecar/Cargo.toml"],
+  "rust-analyzer.linkedProjects": ["./Cargo.toml", "./anvil/Cargo.toml"],
   "files.associations": {
     "vector": "cpp",
     "string": "cpp",

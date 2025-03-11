@@ -1,6 +1,6 @@
 [workspace]
 members = [
-    "sidecar",
+    "anvil",
     "llm_client",
     "llm_prompts",
     "logging",

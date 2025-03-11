@@ -11,7 +11,7 @@ body:
     attributes:
       label: Before submitting your bug report
       options:
-        - label: I'm not able to find an [open issue](https://github.com/codestoryai/sidecar/issues) that reports the same bug
+        - label: I'm not able to find an [open issue](https://github.com/codecruciblecc/anvil/issues) that reports the same bug
           required: false
   - type: textarea
     attributes:
@@ -20,11 +20,11 @@ body:
         Details about your environment.
 
         - **OS**: 
-        - **Sidecar commit**: 
+        - **Anvil commit**: 
         - **IDE commit**: 
       value: |
         - OS: 
-        - Sidecar commit: 
+        - Anvil commit: 
         - IDE commit: 
       render: Markdown
     validations:

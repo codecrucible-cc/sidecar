@@ -789,7 +789,7 @@ impl LLMClientCompletionRequest {
             let mut final_messages = vec![];
             let mut running_message: Option<LLMClientMessage> = None;
             let mut index = 0;
-            dbg!("sidecar.fixies_roles");
+            dbg!("anvil.fixies_roles");
             while index < messages.len() {
                 let current_message = &messages[index];
                 index = index + 1;
